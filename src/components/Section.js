@@ -1,22 +1,27 @@
 import React from "react"
 import styled from "styled-components"
+import FadeIn from "react-fade-in"
 
 function Section(props) {
-  console.log(props)
   return (
     <Wrap bgImage={props.backgroundImg}>
-      <ItemText>
-        <h1>{props.title}</h1>
-        <p>{props.description}</p>
-      </ItemText>
+      <FadeIn>
+        <ItemText>
+          <h1>{props.title}</h1>
+          <p>{props.description}</p>
+        </ItemText>
+      </FadeIn>
+
       <Buttons>
-        <ButtonGroup>
-          <LeftButton>{props.leftBtnText}</LeftButton>
-          {props.rightBtnText && (
-            <RightButton>{props.rightBtnText}</RightButton>
-          )}
-        </ButtonGroup>
-        <DownArrow src="images/down-arrow.svg" />
+        <FadeIn>
+          <ButtonGroup>
+            <LeftButton>{props.leftBtnText}</LeftButton>
+            {props.rightBtnText && (
+              <RightButton>{props.rightBtnText}</RightButton>
+            )}
+          </ButtonGroup>
+          <DownArrow src="images/down-arrow.svg" />
+        </FadeIn>
       </Buttons>
     </Wrap>
   )
@@ -46,6 +51,7 @@ const ItemText = styled.div`
 const ButtonGroup = styled.div`
   display: flex;
   margin-bottom: 30px;
+  z-index: -1;
   @media (max-width: 768px) {
     flex-direction: column;
   }
